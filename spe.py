@@ -34,13 +34,21 @@ def encry(key,ctpwd):
 		adjustedkey=adjustkey(key,len(ctpwd))
 	else:
 		adjustedkey=key
-	print("adjusted key is",adjustedkey)
+	#print("adjusted key is",adjustedkey)
 	#encrykey = bin(ctpwd) ^ bin(adjustedkey)
-	encrypwd=dothejob(adjustedkey,ctpwd)
-	return("encrypted password is ",encrypwd)
+	encrypwd=dothejob(adjustedkey,ctpwd,True)
+	return(encrypwd)
 
 def decry(key,enpwd):
-	return("decrypted")
+	if(len(key)!=len(enpwd)):
+		adjustedkey=adjustkey(key,len(enpwd))
+	else:
+		adjustedkey=key
+	#print("adjusted key is",adjustedkey)
+	#encrykey = bin(ctpwd) ^ bin(adjustedkey)
+	decrypwd=dothejob(adjustedkey,enpwd,False)
+	return(decrypwd)
+	
 
 def adjustkey(key,leng):
 	if (len(key)>leng):
@@ -49,19 +57,27 @@ def adjustkey(key,leng):
 	else:
 		#increase key size
 		factor=int(leng/len(key))
-		print("factor is",factor)
+		#print("factor is",factor)
 		tempnewkey=key*(factor+1)
 		return tempnewkey[:leng]
 
-def dothejob(key,pwd):
+def dothejob(key,pwd,en):
 	keylist=[]
 	pwdlist=[]
 	resultlist=[]
+	#print("gonna do the job")
 	for i in range(0,len(key)):
-		resultlist.append(bin(ord(key[i]))^bin(ord(pwd[i])))
-
-	print(resultlist)
-	return("fff")
+		if (en==True):
+			result=(ord(key[i])^ord(pwd[i]))+33
+		else:
+			result=(ord(key[i])^(ord(pwd[i])-33))
+		resultlist.append(chr(result))
+		#print(result)
+	#print(resultlist)
+	password=""
+	for j in resultlist:
+		password += j
+	return password
 
 
 
