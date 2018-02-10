@@ -41,5 +41,5 @@ def calmaxsubarray(nlist):
 	print(maxlenpop)			
 	return maxlenpop
 
-A=[-10,1, 2, 5, -7, 2, 3,-1,7,1,1,-2,1,8,2,3,-1]
+A=[-2,-10,1, 2, 5, -7, 2, 3,-1,7,1,1,-2,1,8,2,3,-1]
 maxsubarray(A)
