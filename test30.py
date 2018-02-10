@@ -10,5 +10,5 @@ def wave(nlist):
 
 	print(nlist)
 
-A=[1,3,2,4,5]
+A=[1,3,2,4,5,8,10,6]
 wave(A)
