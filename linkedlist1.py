@@ -25,7 +25,7 @@ class LinkedList(object):
 		currentNode = self.head
 		previousNode = None
 		print("to remove {}".format(data))
-		while currentNode.data != data:
+		while (currentNode is not None) and (currentNode.data != data):
 			previousNode = currentNode
 			currentNode = currentNode.nextNode
 
@@ -33,7 +33,10 @@ class LinkedList(object):
 			self.head = currentNode.nextNode
 		else:
 			#print("***",currentNode.data, previousNode.data)
-			previousNode.next = currentNode.nextNode
+			if currentNode is None:
+				print("cannot delete {}".format(data))
+			else:
+				previousNode.next = currentNode.nextNode
 
 	def sizeoflist(self):
 		return self.size
